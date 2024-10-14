@@ -5,6 +5,13 @@ volumes:
   prometheus_data: {}
 
 services:
+
+  storage_api:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+
   prometheus:
     image: prom/prometheus:v2.33.0
     ports:
