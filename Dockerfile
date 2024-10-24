@@ -2,11 +2,11 @@
 FROM python:3.12.7-slim AS builder
 
 WORKDIR /workspace
-  
-COPY ./src . 
-# install python packages in the user´s home(flag -e) to avoid permission issues when not running as root
-RUN pip3 install --user --no-cache-dir -e .
 
+COPY ./src/requirements.txt .
+
+RUN pip3 install --user --no-cache-dir -r requirements.txt
+ 
 # stage runner
 FROM alpine:3 AS runner
 
